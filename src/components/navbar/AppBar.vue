@@ -93,9 +93,23 @@
             </v-toolbar-items>
 
             <v-toolbar-items v-if="user.loggedIn">
-                <v-btn icon class="mx-3">
-                    <v-icon size="30">shopping_cart</v-icon>
-                </v-btn>
+                <v-btn icon class="mx-3" to="/Carrito">
+                   
+                     <v-badge
+          
+                    color="blue"
+                    left
+                    overlap
+                    class="align-self-center"
+                     >
+          <template v-slot:badge>
+            <span v-if="notiicaciones" >{{cantidadN}}</span>
+          </template>
+          <v-icon size="30" >shopping_cart</v-icon>
+           </v-badge>
+          
+        </v-btn>
+                
             </v-toolbar-items>
 
         </v-app-bar>
@@ -116,6 +130,8 @@ import firebase from 'firebase';
         },
         data(){
             return {
+                notiicaciones: true,
+          cantidadN:4,
                 busquedas:'',
                 imagen:'',
                 nombre:'',

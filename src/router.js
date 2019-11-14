@@ -18,7 +18,8 @@ import CreditCard from "./views/account/CreditCard";
 import Notificaciones from "./views/account/Notificaciones";
 import Ayuda from "./views/account/Ayuda";
 import Historial from "./views/account/Historial";
-
+import Carrito from "./views/account/Carrito"
+import Productos from "./views/account/Productos"
 //ruta de busqueda
 import Search from "./views/search/Search";
 
@@ -68,6 +69,20 @@ const router = new Router({
           component: Empresa
         }
       ]
+    },
+    //ruta de producto
+    {
+      path:'/Producto/:id',
+      name: 'Productos',
+      component:Productos
+
+    },
+    //ruta de carrito
+    {
+      path:'/Carrito',
+      name:'Carrito',
+      component:Carrito
+
     },
     {
       path: "/account",
