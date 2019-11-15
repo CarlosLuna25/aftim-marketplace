@@ -11,9 +11,9 @@
                         width="200"
                         class="pa-2"
                         elevation="0"
-                        :to="{name:'aliados', params:{id:categoria.nombre}}"
+                       :to="{name:'aliados', params:{text:categoria.nombre,id:categoria.uid}}"
                     >
-                        <v-img :src="categoria.imagen" height="220" width="220" />
+                        <v-img contain :src="categoria.imagen" height="220" width="220" />
                         <strong class="pa-3">{{categoria.nombre}}</strong>
                     </v-card>
                 </v-hover>

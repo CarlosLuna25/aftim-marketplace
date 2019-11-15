@@ -1,7 +1,7 @@
 <template>
     <div>
         <BarraLateral />
-        <v-app-bar app elevation="3">
+        <v-app-bar app elevation="3" color="">
             <v-app-bar-nav-icon @click="change()" v-if="drawer==false"/>
             <v-icon v-else  @click="change()">
                 close

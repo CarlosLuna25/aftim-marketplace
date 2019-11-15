@@ -39,33 +39,33 @@
           </v-list-item>
           <v-list-item class="mb-2 ml-10 pl-5">
             <v-btn
-              depressed
+              
               v-if="productos[index].cantidad > 1"
-              fab
-              class="display-1"
+             
+             icon
               @click="productos[index].cantidad--"
-              >-</v-btn
+              ><v-icon>remove</v-icon></v-btn
             >
             <v-btn
-              depressed
+             
               v-else
               disabled=""
-              fab
-              class="display-1"
+            
+             icon
               @click="productos[index].cantidad--"
-              >-</v-btn
+              ><v-icon>remove</v-icon></v-btn
             >
-            <v-btn disabled="" v-model="n.cantidad" class="display-1">{{
+            <v-btn icon v-model="n.cantidad" class="font-weight-bold">{{
               productos[index].cantidad
             }}</v-btn>
             <v-btn
               color="light-blue darken-4"
               dark
               depressed
-              fab
+              icon=""
               class="display-1"
               @click="productos[index].cantidad++"
-              >+</v-btn
+              ><v-icon>add</v-icon></v-btn
             >
           </v-list-item>
         </v-card>

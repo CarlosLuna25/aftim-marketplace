@@ -1,9 +1,10 @@
 <template>
   <div>
     <Appbar />
+    
     <v-container fluid="">
       <!--layout principal -->
-
+      
       <v-card>
         <v-row>
           <!--columna para imagen principal y slide de imagenes en miniatura-->
@@ -162,10 +163,12 @@
 <script>
 import Appbar from "@/components/navbar/AppBar";
 import Footer from "@/components/footer/Footer";
+import Banner from "@/components/vistaProducto/Banner";
 export default {
   components: {
     Appbar,
-    Footer
+    Footer,
+    Banner
   },
   data() {
     return {

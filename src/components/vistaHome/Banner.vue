@@ -2,7 +2,7 @@
     <v-layout class="p-0 m-0">
         <v-carousel 
             cycle
-            height="240"
+            height="245"
             hide-delimiter-background
         >
             <v-carousel-item>
