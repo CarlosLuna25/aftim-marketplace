@@ -1,52 +1,46 @@
 <template>
-    <v-layout class="p-0 m-0">
-        <v-carousel 
+   <v-sheet width="100%"  max-height="340">
+<v-carousel 
             cycle
-            height="245"
+            height="100%"
             hide-delimiter-background
         >
-            <v-carousel-item>
-                <v-row
-                    class="fill-height"
-                    align="center"
-                    justify="center"
-                >
+            <v-carousel-item >
+             
                     <v-img contain=""
                     :src="require('@/assets/COMIDA.jpg')"
                     aria-placeholder="asdasdasda"
                     width="100%"
+                   
                     />
-                </v-row>
+              
             </v-carousel-item>
     
-            <v-carousel-item>
-                <v-row
-                    class="fill-height"
-                    align="center"
-                    justify="center"
-                >
+            <v-carousel-item >
+              
                     <v-img 
+                   
                         contain=""
                         :src="require('@/assets/FARMACIA.jpg')"
                         aria-placeholder="asdasdasda"
                     />
-                </v-row>
+               
             </v-carousel-item>
 
-            <v-carousel-item>
-                <v-row
-                    class="fill-height"
-                    align="center"
-                    justify="center"
-                >
+            <v-carousel-item  >
+              
                     <v-img contain=""
+                    
                         :src="require('@/assets/SPORT.jpg')"
                         aria-placeholder="asdasdasda" 
                     />
-                </v-row>
+              
             </v-carousel-item>
         </v-carousel>
-    </v-layout>
+
+   </v-sheet>
+        
+    
 </template>
 
 <script>

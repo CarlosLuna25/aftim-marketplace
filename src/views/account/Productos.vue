@@ -18,7 +18,9 @@
                   max-height="300"
                 ></v-img>
               </v-card>
-              <v-sheet width="100%" class="pa-0">
+              <v-row align="center" justify="center">
+                <v-col cols="12" md="10" align-self="center">
+                  <v-sheet width="100%" class="pa-0">
                 <v-slide-group show-arrows center-active="" mandatory="">
                   <v-slide-item
                     v-for="(n, index) in imagenes"
@@ -42,6 +44,9 @@
                   </v-slide-item>
                 </v-slide-group>
               </v-sheet>
+                </v-col>
+              </v-row>
+              
             </v-sheet>
           </v-col>
 

@@ -1,7 +1,9 @@
 <template>
   <div>
     <AppBar />
-    <Banner />
+     <Banner v-if="activo" />
+
+    <SkeletonImage v-else/>
     <Categorias title="Categorias" :categorias="categor" v-if="activo" />
 
     <v-row v-else class="my-5">
@@ -9,6 +11,7 @@
         <SkeletonCard />
       </v-col>
     </v-row>
+    <BannerPagos/>
 
     <Categorias title="Sugerencias" :categorias="aliados" v-if="activo" />
 
@@ -22,6 +25,7 @@
 </template>
 
 <script>
+import SkeletonImage from '@/components/layouts/SkeletonImage'
 import { mapState } from "vuex";
 import AppBar from "@/components/navbar/AppBar";
 import Footer from "@/components/footer/Footer";
@@ -29,6 +33,7 @@ import Banner from "@/components/vistaHome/Banner";
 import Categorias from "@/components/vistaHome/Categorias";
 import SkeletonCard from "@/components/layouts/SkeletonCard";
 import firebase from "firebase";
+import BannerPagos from "@/components/vistaHome/BannerPagos";
 
 export default {
   name: "home",
@@ -37,7 +42,9 @@ export default {
     Footer,
     Banner,
     Categorias,
-    SkeletonCard
+    SkeletonCard,
+    SkeletonImage,
+    BannerPagos
   },
   data() {
     return {

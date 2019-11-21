@@ -1,36 +1,49 @@
 <template>
     <div>
         <BarraLateral />
-        <v-app-bar app elevation="3" color="">
+        <v-app-bar app elevation="3" color="light-blue darken-4" dark id="scroll-target">
             <v-app-bar-nav-icon @click="change()" v-if="drawer==false"/>
-            <v-icon v-else  @click="change()">
-                close
-            </v-icon>
+           <v-btn v-else  @click="change()" icon depressed>
+                <v-icon>
+                    close
+                </v-icon>
+            </v-btn>
 
             <v-toolbar-title class="mx-8 text-center">
                 <v-btn text router to="/">
-                    <v-img src="@/assets/log.png"></v-img>
+                    <v-img width="110" src="@/assets/LogoA.png"></v-img>
                 </v-btn>
             </v-toolbar-title>
-                
-            <v-text-field
-                v-model="busquedas"
-                label="Search store..."
-                append-icon="search"
+               
+                <v-progress-linear
+                :active="loading"
+                :indeterminate="loading"
+                absolute
+                bottom
                 color="#005598"
+            ></v-progress-linear>
+            <v-text-field
+            light=""
+                v-model="busquedas"
+                label="Buscar producto..."
+                prepend-inner-icon="search"
+                clearable
                 hide-details
                 outlined
                 dense
-                rounded
                 v-on:keyup.enter="search"
-                class="hidden-sm-and-down"
+                 class="hidden-sm-and-down mx-8"
+                background-color="#f7f7f7"
+                color="#999"
+                single-line
+               
             />
                 
-            <v-spacer />
+             <v-spacer/> <v-spacer/>
             <v-divider vertical class="hidden-sm-and-down color"></v-divider>
             <v-toolbar-items v-if="user.loggedIn">
-                <v-btn icon class="mx-3" to="/account/notificaciones">
-                    <v-icon size="30">notifications</v-icon>
+                <v-btn   icon class="mx-3" to="/account/notificaciones">
+                    <v-icon @mouseleave="animacion=false" @mouseover="Vibrar" :class="animacion ? 'animated shake infinite':''" size="30">notifications</v-icon>
                 </v-btn>
             </v-toolbar-items>
 
@@ -61,11 +74,11 @@
                         <v-list dense>
                             <v-list-item>
                                 <v-list-item-avatar color="grey" dark>
-                                    <img :src="imagen" alt="JN">
+                                    <img src="https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posición-de-foto-gris-vector-de-ilustr.jpg?ver=6" alt="JN">
                                 </v-list-item-avatar>
 
                                 <v-list-item-content>
-                                    <v-list-item-title>{{nombre+' '+apellido}}</v-list-item-title>
+                                    <v-list-item-title class="text-uppercase">{{nombre+' '+apellido}}</v-list-item-title>
                                 </v-list-item-content>
 
                             </v-list-item>
@@ -136,11 +149,14 @@ import firebase from 'firebase';
                 imagen:'',
                 nombre:'',
                 apellido:'',
+                animacion:false,
                 link:[
                     {text:'Ajustes de cuentas',path:'/account/profile'},
                     {text:'Agregar tarjeta de credito',path:'/account/credit-card'},
                     {text:'centro de ayuda',path:'/account/ayuda'},
-                ]
+                ],
+                loading:false,
+                scroll:0,
             }
         },
         computed: {
@@ -152,12 +168,22 @@ import firebase from 'firebase';
         },
         methods: {
             ...mapActions(['setDrawer']),
+             onScroll (e) {
+                this.offsetTop = e.target.scrollTop
+            },
+            Vibrar(){
+                return this.animacion=true;
+            },
 
             transition(){
                 return "slide-y-transition"
             },
             search() {
-                router.push("/search");
+                 this.loading=true;
+                setTimeout(() => {
+                    this.loading=false;
+                    router.push("/search");
+                },3000);
             },
             change(){
                 if(this.drawer==true){
@@ -196,4 +222,7 @@ import firebase from 'firebase';
     .color{
         color:black;
     }
+</style>
+<style src="@/plugins/animate.css" scoped>
+
 </style>
