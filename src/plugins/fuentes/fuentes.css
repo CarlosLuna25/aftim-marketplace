@@ -1,0 +1,28 @@
+@font-face {
+    font-family: indie-flower;
+    src: url('fonts/IndieFlower-Regular.ttf');
+  }
+  .indie{
+    font-family: indie-flower!important;
+  }
+  @font-face{
+      font-family: Kaushan;
+      src: url('fonts/KaushanScript-Regular.ttf');
+  }
+  .kaushan{
+      font-family: Kaushan!important;
+  }
+  @font-face{
+    font-family: Overpass;
+    src: url('fonts/Overpass-Regular.ttf');
+}
+.overpass{
+    font-family: Overpass!important;
+}
+@font-face{
+    font-family: Overpass-italic;
+    src: url('fonts/Overpass-Italic.ttf');
+}
+.overpass-italic{
+    font-family: Overpass-italic!important;
+}
