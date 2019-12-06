@@ -141,6 +141,7 @@
 
 <script>
 import validations from '@/validations/validations';
+
     export default {
         data(){
             return{
@@ -154,10 +155,11 @@ import validations from '@/validations/validations';
                 ...validations
             }
         },
+
         methods: {
             enviar(){
                 console.log('enviado');
             }
         },
     }
-</script> 
+</script>

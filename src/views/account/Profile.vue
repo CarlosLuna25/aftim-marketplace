@@ -58,13 +58,13 @@
                         label="Telefono"
                         type="number"
                         counter="12"
-                         prefix="+58"
                         dense
+                        prefix="+58"
                         color="#005598"
                         append-icon="create"
                         :rules="[
                                 required('Telefono'),
-                               minLength('Telefono',10),
+                                minLength('Telefono',10),
                               ]"
                     />
                 </v-col>
@@ -101,7 +101,7 @@ export default {
       editable:false,
       nombre: "",
       apellido: "",
-       cedula:'',
+      cedula:'',
       telefono: "",
       email: "",
       count:0,
@@ -156,7 +156,10 @@ export default {
     },
 
     async getProfile(uid) {
+
       var uid =await firebase.auth().currentUser.uid;
+      console.log(uid);
+      
       var ref = await firebase
         .firestore()
         .collection("profile")

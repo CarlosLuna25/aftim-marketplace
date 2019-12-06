@@ -7,9 +7,11 @@ import "@babel/polyfill";
 import "roboto-fontface/css/roboto/roboto-fontface.css";
 import "@mdi/font/css/materialdesignicons.css";
 import firebase from "firebase";
+import Croppa from 'vue-croppa'
+import chartist from './plugins/chartist.js';
 
 Vue.config.productionTip = false;
-
+Vue.use(Croppa);
 var setting = { timestampsInSnapshots: true };
 
 var firebaseConfig = {
@@ -25,14 +27,15 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-
 firebase.auth().onAuthStateChanged(user => {
-  store.dispatch("fetchUser", user);
-
+    store.dispatch("fetchUser", user);
 });
+
 new Vue({
+  chartist,
   store,
   router,
   vuetify,
   render: h => h(App)
 }).$mount("#app");
+

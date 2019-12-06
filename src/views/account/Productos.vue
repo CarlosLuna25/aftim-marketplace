@@ -12,6 +12,7 @@
             <v-sheet class="pa-4 " width="100%">
               <v-card class="pa-0 my-2">
                 <v-img
+                v-model="imagenPrincipal"
                   :src="imagenPrincipal"
                   contain
                   width="100%"
@@ -88,7 +89,7 @@
                 Disponibilidad:
                 <v-chip
                   dark=""
-                  :color="disponible ? 'indigo darken-4' : 'red accent-2'"
+                  :color="disponible ? 'teal lighten-2' : 'red accent-2'"
                 >
                   <span v-if="disponible">En Stock</span>
                   <span v-else>Agotado</span></v-chip
@@ -168,25 +169,25 @@
 <script>
 import Appbar from "@/components/navbar/AppBar";
 import Footer from "@/components/footer/Footer";
-import Banner from "@/components/vistaProducto/Banner";
+
 export default {
   components: {
     Appbar,
     Footer,
-    Banner
+   
   },
   data() {
     return {
       calificacion: 4,
       votos: 300,
-      nombreProducto: "Gaming Laptop Asus ",
-      disponible: !true,
-      imagenPrincipal: require("@/assets/Producto.png"),
+      nombreProducto: "Pepito Luchon ",
+      disponible: true,
+      imagenPrincipal:  "http://www.totis.com.mx/wp-content/uploads/luchones-cat-mobile.png",
       imagenes: [
-        { imagen: require("@/assets/Producto.png") },
-        { imagen: require("@/assets/laptop1.jpg") },
-        { imagen: require("@/assets/laptop2.jpg") },
-        { imagen: require("@/assets/laptop3.jpg") }
+        { imagen: "http://www.totis.com.mx/wp-content/uploads/luchones-cat-mobile.png" },
+        { imagen:  "http://www.totis.com.mx/wp-content/uploads/luchones-cat-mobile.png"},
+        { imagen:  "http://www.totis.com.mx/wp-content/uploads/luchones-cat-mobile.png" },
+        { imagen:  "http://www.totis.com.mx/wp-content/uploads/luchones-cat-mobile.png"}
       ]
     };
   },
@@ -194,7 +195,8 @@ export default {
     cambiarimg(i) {
       this.imagenPrincipal = i.imagen;
     }
-  }
+  },
+ 
 };
 </script>
 <style>

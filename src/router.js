@@ -11,30 +11,48 @@ import Register from "./views/auth/Register.vue";
 import Cliente from "./views/auth/Cliente";
 import Empresa from "./views/auth/Empresa";
 
+//pruebas
+import Pruebas from './views/pruebas/Pruebas';
+
 //rutas del perfil de usuario
 import Account from "./views/account/Account";
 import Profile from "./views/account/Profile";
-import CreditCard from "./views/account/CreditCard";
+import MetodoDePago from "./views/account/MetodoDePago";
 import Notificaciones from "./views/account/Notificaciones";
 import Ayuda from "./views/account/Ayuda";
 import Historial from "./views/account/Historial";
-import Carrito from "./views/account/Carrito"
-import Productos from "./views/account/Productos"
+import Productos from "./views/account/Productos";
+
 //ruta de busqueda
 import Search from "./views/search/Search";
 
 //ruta de perfil de aliados
 import Aliados from "./views/aliados/Aliados";
+import AliadoEspecifico from "./views/aliados/AliadoEspecifico";
+import Tipos from "./views/aliados/Tipos";
+
+//rutas de adminitrador
+import Admin from './views/admin/Admin'
+import Dashboard from './views/admin/Dashboard'
+import Usuarios from './views/admin/Usuarios'
+import Notificaciones2 from './views/admin/Notificaciones'
+import Aliados2 from './views/admin/Aliados'
+import Ventas from './views/admin/Ventas'
 
 Vue.use(Router);
 
 const router = new Router({
-  mode: "history",
+ // mode: "history",
   routes: [
     {
       path: "/",
       name: "home",
       component: Home
+    },
+    {
+      path: "/pruebas",
+      name: "pruebas",
+      component: Pruebas
     },
     {
       path: "/search",
@@ -70,20 +88,6 @@ const router = new Router({
         }
       ]
     },
-    //ruta de producto
-    {
-      path:'/Producto/:id',
-      name: 'Productos',
-      component:Productos
-
-    },
-    //ruta de carrito
-    {
-      path:'/Carrito',
-      name:'Carrito',
-      component:Carrito
-
-    },
     {
       path: "/account",
       name: "account",
@@ -96,9 +100,9 @@ const router = new Router({
           component: Profile
         },
         {
-          path: "credit-card",
-          name: "credit",
-          component: CreditCard
+          path: "metodo-de-pago",
+          name: "metodos",
+          component: MetodoDePago
         },
         {
           path: "notificaciones",
@@ -117,19 +121,99 @@ const router = new Router({
         }
       ]
     },
+
     {
-    
-      path: "/aliados/:text/:id",
-      name: "aliados",
-      component: Aliados
+      path:"/Producto/:id",
+      name: "Producto",
+      component: Productos
     },
-   
+    {
+      path: "/aliados",
+      name: "aliados",
+      component: Aliados,
+
+      children:[
+        {
+          path:"tipo/:text",
+          name:"tipo",
+          component:Tipos
+        },
+        {
+          path:":local",
+          name:"local",
+          component:AliadoEspecifico,
+
+          children:[
+            {
+              path:":categoria",
+              name:"nivel1",
+              component:AliadoEspecifico,
+
+              children:[
+                {
+                  path:":especifica",
+                  name:"nivel2",
+                  component:AliadoEspecifico,
+                }
+              ]
+            },
+          ]
+        }
+
+      ]
+    },
     {
       path: "*",
       name: "notfount",
       component: NotFound
+    },
+    {
+      path:'/admin',
+      name:'admin',
+      component:Admin , 
+
+      children:[
+        {
+          path:'dashboard',
+          name:'Dashboard',
+          component:Dashboard
+        },
+        {
+          path:'usuarios',
+          name:'Usuarios',
+          component:Usuarios,
+        },
+        {
+          path:'aliados',
+          name:'Aliados',
+          component:Aliados2
+        },
+        {
+          path:'notificaciones',
+          name:'Notificaciones',
+          component:Notificaciones2
+        },
+        {
+          path:'ventas',
+          name:'Ventas',
+          component:Ventas
+        }
+      ]
     }
-  ]
+  ],
+   base: '/', // The base URL of the app
+  linkActiveClass: 'router-link-active', // <router-link> default active class
+  linkExactActiveClass: 'router-link-exact-active', // <router-link> default active class for exact matches
+  scrollBehavior (to, from, savedPosition) {
+    // native-like behavior when navigating with back/forward buttons
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  },
+  parseQuery: q => q, // custom query string parse
+  fallback: true,
 });
 
 /*router.beforeEach((to, from, next) => {

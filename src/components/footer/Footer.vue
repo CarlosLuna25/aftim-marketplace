@@ -1,13 +1,11 @@
 <template>
-<div> 
-    <PreFooter />
- <v-sheet color="light-blue lighten-1" dark>
-       
+    <v-sheet>
+        <PreFooter />
         <v-divider />
 
-        <v-layout class="light-blue darken-1" row>
-            <v-flex md3 xs6 align-self-baseline class="px-5 py-2 ">
-                <v-list dense color="light-blue darken-1">
+        <v-layout row>
+            <v-flex md3 xs6 align-self-baseline class="px-5 py-2">
+                <v-list dense>
                     <h5 class="font-weight-bold">Categorias</h5>
 
                     <v-hover 
@@ -29,7 +27,7 @@
             <v-divider vertical class="hidden-sm-and-down"/>
 
             <v-flex md5 xs6 align-self-baseline class="px-3 py-2">
-                <v-list dense color="light-blue darken-1">
+                <v-list dense>
                     <h5 class="font-weight-bold">Información de interes</h5>
                     <v-hover 
                         v-slot:default="{ hover }" 
@@ -50,7 +48,7 @@
             <v-divider vertical class="hidden-sm-and-down"/>
 
             <v-flex md3 xs12 class="px-3 py-2" align-self-baseline>
-                <v-list dense color="light-blue darken-1">
+                <v-list dense>
                     <v-layout row wrap>
                         <v-flex md12 xs6>
                             <h5 class="font-weight-bold mx-5">Descarga la App</h5>
@@ -85,8 +83,6 @@
 
         <SubFooter />
    </v-sheet>
-</div>
-   
 </template>
 
 <script>
@@ -109,7 +105,7 @@ import PreFooter from './PreFooter';
                 informacion:[
                     {text:'Terminos y condiciones'},
                     {text:'Trabaja con nosotros'},
-                    {text:' Politica de tratamientos de datos personales'},
+                    {text:'Politica de tratamientos de datos personales'},
                     {text:'Preguntas frecuentes'}
                 ],
                 siguenos:[

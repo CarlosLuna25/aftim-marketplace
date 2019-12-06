@@ -5,7 +5,7 @@
       hide-overlay
       :transition="transition()"  
       temporary
-      style="margin-top:65px;"
+      style="margin-top:80px;"
     >
       <v-menu 
         open-on-hover 
@@ -66,10 +66,12 @@
 
 <script>
 import {mapState,mapActions} from 'vuex';
+
     export default {
         name: 'BarraLateral',
         computed: {
           ...mapState(['items','drawer']),
+
             drawers:{
                 get(){
                     return this.drawer;
@@ -81,6 +83,7 @@ import {mapState,mapActions} from 'vuex';
         },
         methods:{
             ...mapActions(['setDrawer']),
+
           transition(){
             if(this.drawer){
               return "slide-x-transition";

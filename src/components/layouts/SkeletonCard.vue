@@ -1,6 +1,6 @@
 <template>
     <v-sheet 
-        :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`" 
+        :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
         class="mx-5"
     >
         <v-skeleton-loader max-width="250" type="card" />
@@ -8,8 +8,8 @@
 </template>
 
 <script>
-export default {
-  inject: ["theme"]
-};
+    export default {
+        inject: ["theme"]
+    };
 </script>
 

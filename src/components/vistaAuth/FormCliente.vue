@@ -4,14 +4,14 @@
             <v-stepper-header class="elevation-0">
                 <v-stepper-step 
                     step="1" 
-                   :complete="valid1" 
+                    :complete="valid1" 
                     :color="valid1 ? 'green':'#005598'"
                 >Datos basicos
                 </v-stepper-step>
                 <v-divider></v-divider>
                 <v-stepper-step 
                     step="2" 
-                   :complete="valid2" 
+                    :complete="valid2" 
                     :color="valid2 ? 'green':'#005598'"
                 >Telefono
                 </v-stepper-step>
@@ -99,7 +99,7 @@
                             </v-row>
                         </v-form>
                     </v-card>
-                                      <v-row>
+                    <v-row>
                         <v-col cols="12" md="3" lg="3" sm="3">
                             <v-btn @click="e1=1" text icon>
                                 <v-icon large>
@@ -113,7 +113,6 @@
                             </v-btn>
                         </v-col>
                     </v-row>
-                    
                 </v-stepper-content>
 
                 <v-stepper-content step="3">
@@ -155,7 +154,7 @@
                         </v-card>
                         <v-row>
                             <v-col cols="12" md="3" lg="3" sm="3">
-                                  <v-btn @click="e1=2" text icon>
+                                <v-btn @click="e1=2" text icon>
                                     <v-icon large>
                                         arrow_back
                                     </v-icon>
@@ -200,6 +199,7 @@
 import validations from '@/validations/validations';
 import firebase from 'firebase';
 import router from '@/router';
+
     export default {
         data(){
             return {
@@ -210,7 +210,7 @@ import router from '@/router';
                 showPassword:false,
                 error:null,
                 snackbar:false,
-                 terms:false,
+                terms:false,
                 conditions:false,
                 user:{
                     nombre:'',
@@ -220,21 +220,24 @@ import router from '@/router';
                     telefono:'',
                     sexo:'',
                     fechaNac:'',
-                    cedula:''
+                    cedula:'',
                 },
                 ...validations,
                 e1:0,
                 loading:false,
             }
         },
+
         watch: {
             loading() {
                 setTimeout(() => (this.loading = false), 2000)
             },
         },
+
         methods:{
             register(){
                 this.loading = true;
+
                 firebase.auth().createUserWithEmailAndPassword(
                     this.user.email, this.user.password
                 ).then(data => {
